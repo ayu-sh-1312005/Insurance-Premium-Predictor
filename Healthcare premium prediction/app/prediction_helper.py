@@ -138,7 +138,7 @@ def predict(input_dict):
     input_df = preprocess_input(input_dict)
 
     if input_dict['age'] <= 25:
-        scaler_dict = load('../artifacts/scaler_young.joblib')
+        scaler_dict = load('artifacts/scaler_young.joblib')
         scaler = scaler_dict['scalar']
         cols_to_scale = scaler_dict['cols_to_scale']
 
@@ -146,7 +146,7 @@ def predict(input_dict):
         pred = model_young.predict(input_df)
 
     else:
-        scaler_dict = load('../artifacts/scaler_rest.joblib')
+        scaler_dict = load('artifacts/scaler_rest.joblib')
         scaler = scaler_dict['scalar']
         cols_to_scale = scaler_dict['cols_to_scale']
 
@@ -155,4 +155,5 @@ def predict(input_dict):
 
   
     return pred[0]
+
 
