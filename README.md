@@ -4,6 +4,11 @@ A **Machine Learning web application** that predicts the **annual health insuran
 The application is built using **Python, Scikit-learn, and Streamlit** and provides an interactive interface for users to estimate insurance premiums.
 
 ---
+## Live Demo
+
+A live, interactive version of the **Insurance Premium Predictor** is available online. You can access it here:
+
+[**Access the Insurance Premium Predictor**](https://ml-annual-insurance-premium-predictor.streamlit.app)
 
 # 🚀 Project Overview
 
