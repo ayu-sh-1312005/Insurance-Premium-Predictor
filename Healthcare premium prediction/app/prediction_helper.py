@@ -1,5 +1,6 @@
 import pandas as pd
 from joblib import load
+import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 ARTIFACT_PATH = os.path.join(BASE_DIR, "artifacts")
@@ -159,6 +160,7 @@ def predict(input_dict):
 
   
     return pred[0]
+
 
 
 
