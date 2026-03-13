@@ -1,10 +1,10 @@
 import pandas as pd
 from joblib import load
 
-model_young=load('artifacts/model_young.joblib')
-model_rest=load('artifacts/model_rest.joblib')
-scaler_young=load('artifacts/scaler_young.joblib')
-scaler_rest=load('artifacts/scaler_rest.joblib')
+model_young=load('../artifacts/model_young.joblib')
+model_rest=load('../artifacts/model_rest.joblib')
+scaler_young=load('../artifacts/scaler_young.joblib')
+scaler_rest=load('../artifacts/scaler_rest.joblib')
 
 risk_score = {
     'diabetes': 6,
@@ -138,7 +138,7 @@ def predict(input_dict):
     input_df = preprocess_input(input_dict)
 
     if input_dict['age'] <= 25:
-        scaler_dict = load('artifacts/scaler_young.joblib')
+        scaler_dict = load('../artifacts/scaler_young.joblib')
         scaler = scaler_dict['scalar']
         cols_to_scale = scaler_dict['cols_to_scale']
 
@@ -146,12 +146,13 @@ def predict(input_dict):
         pred = model_young.predict(input_df)
 
     else:
-        scaler_dict = load('artifacts/scaler_rest.joblib')
+        scaler_dict = load('../artifacts/scaler_rest.joblib')
         scaler = scaler_dict['scalar']
         cols_to_scale = scaler_dict['cols_to_scale']
 
         input_df[cols_to_scale] = scaler.transform(input_df[cols_to_scale])
         pred = model_rest.predict(input_df)
 
-    print('generated')
+  
     return pred[0]
+
