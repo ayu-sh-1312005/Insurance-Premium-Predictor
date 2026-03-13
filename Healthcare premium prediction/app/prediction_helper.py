@@ -1,10 +1,10 @@
 import pandas as pd
 from joblib import load
 
-model_young=load('../artifacts/model_young.joblib')
-model_rest=load('../artifacts/model_rest.joblib')
-scaler_young=load('../artifacts/scaler_young.joblib')
-scaler_rest=load('../artifacts/scaler_rest.joblib')
+model_young=load('artifacts/model_young.joblib')
+model_rest=load('artifacts/model_rest.joblib')
+scaler_young=load('artifacts/scaler_young.joblib')
+scaler_rest=load('artifacts/scaler_rest.joblib')
 
 risk_score = {
     'diabetes': 6,
@@ -155,5 +155,6 @@ def predict(input_dict):
 
   
     return pred[0]
+
 
 
