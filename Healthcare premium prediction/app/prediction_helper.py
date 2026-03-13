@@ -1,10 +1,14 @@
 import pandas as pd
 from joblib import load
 
-model_young=load('artifacts/model_young.joblib')
-model_rest=load('artifacts/model_rest.joblib')
-scaler_young=load('artifacts/scaler_young.joblib')
-scaler_rest=load('artifacts/scaler_rest.joblib')
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+ARTIFACT_PATH = os.path.join(BASE_DIR, "artifacts")
+
+model_young = load(os.path.join(ARTIFACT_PATH, "model_young.joblib"))
+model_rest = load(os.path.join(ARTIFACT_PATH, "model_rest.joblib"))
+
+scaler_young = load(os.path.join(ARTIFACT_PATH, "scaler_young.joblib"))
+scaler_rest = load(os.path.join(ARTIFACT_PATH, "scaler_rest.joblib"))
 
 risk_score = {
     'diabetes': 6,
@@ -138,7 +142,7 @@ def predict(input_dict):
     input_df = preprocess_input(input_dict)
 
     if input_dict['age'] <= 25:
-        scaler_dict = load('artifacts/scaler_young.joblib')
+        scaler_dict = load(os.path.join(ARTIFACT_PATH, "scaler_young.joblib"))
         scaler = scaler_dict['scalar']
         cols_to_scale = scaler_dict['cols_to_scale']
 
@@ -146,7 +150,7 @@ def predict(input_dict):
         pred = model_young.predict(input_df)
 
     else:
-        scaler_dict = load('artifacts/scaler_rest.joblib')
+        scaler_dict = load(os.path.join(ARTIFACT_PATH, "scaler_rest.joblib"))
         scaler = scaler_dict['scalar']
         cols_to_scale = scaler_dict['cols_to_scale']
 
@@ -155,6 +159,7 @@ def predict(input_dict):
 
   
     return pred[0]
+
 
 
 
